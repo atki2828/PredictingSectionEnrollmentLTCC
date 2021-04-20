@@ -128,10 +128,10 @@ corrplot(M,method = 'color', p.mat = res1$p, insig = "label_sig",
 qbplot <- ggplot(data = Enroll %>% filter(Acad_Year < 2019) , aes(x=Quarter , y=ACTIVE_STUDENT_COUNT )) + 
                    geom_boxplot(aes(fill=Quarter)) +
                    facet_grid(~Acad_Year)+ 
-                   ylab('Enrollments Per Section')+
+                    scale_fill_manual(values = c('#00aa00','#013d5b','#FFFE33','#C4D2D8'))+
+                    ylab('Enrollments Per Section')+
                     ggtitle('Section Enrollments By Term Over Year') +
-              
-                   theme_base()
+                    theme_bw()
   
                     
 print(qbplot)
@@ -142,7 +142,7 @@ Enroll$OnlineED <- as.factor(ifelse(Enroll$OnlineED ==1, 'Online','F2F'))
 Online.pl <- ggplot(data= Enroll %>% filter(Acad_Year %in% c(2016,2017,2018)), aes(x=ACTIVE_STUDENT_COUNT, fill=OnlineED )) + 
             geom_density(alpha =0.4, position='identity')+
             facet_grid(~Acad_Year)+ 
-            scale_fill_manual(values = c('orchid','green4'))+
+            scale_fill_manual(values = c('#00aa00','#013d5b'))+
             xlab('Enrollments Per Section') +
             ggtitle('Section Enrollments by Modality Over Year')+
             theme_base()
@@ -151,12 +151,16 @@ Online.pl <- ggplot(data= Enroll %>% filter(Acad_Year %in% c(2016,2017,2018)), a
 print(Online.pl)
 
 
-Ol.regression <- ggplot(data= Enroll %>% filter(Acad_Year %in% c(2016,2017,2018)), aes( x =AvgSecEnr3yr,y=ACTIVE_STUDENT_COUNT,color=OnlineED  )) + 
+Ol.regression <- ggplot(data= Enroll %>% filter(Acad_Year %in% c(2015,2016,2017)), aes( x =AvgSecEnr3yr,y=ACTIVE_STUDENT_COUNT,color=OnlineED  )) + 
                         geom_point() +
                         geom_smooth(method='lm', formula= y~x)+
-                        scale_color_manual(values =c('orchid','green4'))+
+                        scale_color_manual(values =c('#013d5b','#00aa00'))+
                         facet_grid(~Acad_Year)+ 
-                        theme_base()
+                        labs(title = 'Noticeable Difference in Enrollments by Section Modality 2015-2017',
+                                y='Active Student Count',
+                             x='3 Year Prior Average')+
+                        theme_bw()+
+                        theme(legend.position = 'bottom')
 
 print(Ol.regression)
 
