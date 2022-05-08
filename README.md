@@ -1,4 +1,4 @@
-### PredictingSectionEnrollmentLTCC
+## PredictingSectionEnrollmentLTCC
 
 
 *This repository contains all files used in a project predicting section level enrollment counts at Lake Tahoe Community College using Machine Learning.*
