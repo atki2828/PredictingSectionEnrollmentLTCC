@@ -3,7 +3,6 @@ library(tidyr)
 library(glmnet)
 library(randomForest)
 ######## SECTION LOOK 
-setwd("~/Math-533")
 library(glmnet)
 library(ggplot2)
 library(neuralnet)

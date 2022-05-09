@@ -1,10 +1,9 @@
 ## PredictingSectionEnrollmentLTCC
 
-
 *This repository contains all files used in a project predicting section level enrollment counts at Lake Tahoe Community College using Machine Learning.*
 
 ## Project Overview
-This project looked at how we could use popular regression models to forecast section level enrollment at Lake Tahoe Community College. The models were each given predictors based on section offerings such as time of day and day patterns, as well as course department data, term data, program date and historical enrollment trends. From this predictor space we sought to train models on historical data and then use the models to predict on a hold out validation set for an entire term. The models were trained on data from 2012-2017 and then asked to predict enrollments for each term in the 2018 academic year.
+This project looked at using popular regression models to forecast section level enrollment at Lake Tahoe Community College. The models were each given predictors based on section offerings such as time of day and day patterns, as well as course department data, term data, program data and historical enrollment trends. From this predictor space, models were trained on historical data and then used to predict on a hold out validation set for an entire term. The models were trained on data from 2012-2017 and then asked to predict enrollments for each term in the 2018 academic year. The models used for comparisons were Lasso Regression, Random Forests, XG-Boost and a Feed Forward Neural Network. Finally, an Ensemble model was used that was a combination of the Lasso Regression, XG-Boost and Random Forest. 
 
 Additionally, an analysis of variable importance was done on the ensemble models to determine which variables were the strongest predictors of section enrollment.
 
@@ -12,7 +11,7 @@ In order to demonstrate the success of the models used a Tableau dashboard was c
 
 
 ## The files in the repository illustrates the following processes
-* Pulling Data in SQL
+* Querying Data in SQL
 * Performing EDA in R
 * Running Models on Train and Test Data in R
 * Communicating findings in a research paper
@@ -30,6 +29,24 @@ In order to demonstrate the success of the models used a Tableau dashboard was c
 * C4P.Csv (Course Program Data)
 * Sed_DT.csv (Date Time Section data)
 * SECTT1.csv (Section Enrollment Data)
+
+## Methods Used
+* XG-Boost
+* Random Forests
+* Lasso Regression/Regularization
+* Neural Networks
+
+## Technology Used
+* R programming 
+* Tidyverse
+* XGboost
+* glmnet
+* ggplot2
+* randomForest
+* SQL Server
+* Tableau
+* matrixStats
+
 
 ## Project Takeaways
 The Lasso Regression, XGboost, and Random Forest all showed great promise as a means to forecast section enrollments on the terms used as validation data. By holding a term out and training the models on past terms, we have a good understanding of how they would perform. The residual behavior on the validation data showed the majority of predictions were within 4 enrollments of the actual observed enrollments. This number was improved by using an Ensemble forecast of the 3 best models and the majority of the predictions came within 3 enrollments on the validation data set.
